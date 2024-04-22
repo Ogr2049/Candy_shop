@@ -1,0 +1,20 @@
+{% extends "layout.html" %}
+{% load static %}
+{% block content %}
+    <link rel="stylesheet" href="{% static 'css/reminders.css' %}">
+    <script src="{% static 'js/reminders.js' %}" defer></script>
+    <section class="remindersContent">
+    <a href="{% url 'cakes:create_reminder' %}" class="btnCreateReminder">Создать</a>
+    {% for reminder in reminders %}
+        <a href="/reminder/{{ reminder.id }}">
+            <div class="reminder">
+                <input class="reminderCheckbox" id_reminder="{{ reminder.id }}" type="checkbox" id="flexSwitchCheckReverse" {% if reminder.checked %}checked{% endif %}>
+                <label class="form-check-label" for="flexSwitchCheckReverse">{{ reminder.text }}</label>
+                <h2>
+                    {{ reminder.date }}
+                </h2>
+            </div>
+        </a>
+    {% endfor %}
+    </section>
+{% endblock %}

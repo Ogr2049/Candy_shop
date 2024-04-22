@@ -1,0 +1,83 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+<div class="cartPage">
+    <div class="cart">
+
+    {% for note in cart %}
+        <div class="cartItem">
+            <h1>
+                {{ note.product.name }}
+            </h1>
+            <p class="categoryCart">
+                {{ note.product.category }}
+            </p>
+            <div class="cartImageFunc">
+                <img src="{{ note.product.image }}" />
+                <div class="cartFunctionals">
+                    <p>
+                        Количество: {{ note.quantity }}
+                    </p>
+                    <div class="changeQuantity">
+                        <form method="POST" action="{% url 'cakes:cart_decrease' %}?id={{ note.product.id }}">
+                            {% csrf_token %}
+                                <button class="minus" type="submit">
+                                    -1
+                                </button>
+                        </form>
+                        <form method="POST" action="{% url 'cakes:cart_add' %}?id={{ note.product.id }}">
+                            {% csrf_token %}
+                            <button class="quantity" type="submit">
+                                +1
+                            </button>
+                        </form>
+                    </div>
+                    <form method="POST" action="{% url 'cakes:cart_remove' %}?id={{ note.product.id }}">
+                        {% csrf_token %}
+                            <button class="enter" type="submit">
+                                Убрать из корзины
+                            </button>
+                    </form>
+                    </div>
+                </div>
+            </div>
+    {% endfor %}
+    </div>
+    <div class="makeOrder">
+        <div class="firstLine">
+           <span class="addPromo">
+                Введите промокод 
+                <input type="text" class="promocodeInput">
+            </span>
+            <button type="submit" class="activatePromocode">
+                Активировать промокод 
+            </button>
+        </div>
+        <div class="bottomSide">
+            <div class="secondLine">
+                <div class="finalWeight">
+                    <span class="itog">
+                        Итого:
+                    </span>
+                    <div class="totalWeight">
+                        Общий вес: {{ cart.get_total_weight }} кг.
+                    </div>
+                </div>
+                <div class="totalPrice">
+                    {{ cart.get_total_price }} Р
+                </div>
+                <a href="{% url 'cakes:order' %}" class="orderSubmit">
+                    Оформить заказ
+                </a>
+            </div>
+            <div class="addGoods">
+                <span class="delivery">
+                    Добавьте товаров на руб для бесплатной доставки
+                </span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

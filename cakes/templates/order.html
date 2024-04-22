@@ -1,0 +1,111 @@
+{% extends 'layout.html' %}
+
+{% load static %}
+
+{% block content %}
+    <div class="orderPage">
+        <h1 class="orderPageTitle">Оформить заказ</h1>
+        <div class="credentials">
+            <div class="firstBlock">
+                <div class="contactsInfo">
+                    <h1 class="firstBlockTitle">Контактная информация</h1>
+                    <div class="nameSurname">
+                        <input class="orderPageInput" type="text" placeholder="Фамилия">
+                        <input class="orderPageInput" type="text" placeholder="Имя">
+                    </div>
+                    <div class="orderPageBtnDiv">
+                        <input type="email" class="orderPageInputLong" placeholder="Email">
+                        <button class="orderPageBlueBtn">У меня уже есть аккаунт</button>
+                    </div>
+                </div>
+                <div class="deliveryInfo">
+                    <h1 class="firstBlockTitle">Доставка</h1>
+                    <div class="orderPageBtnDiv">
+                        <input type="text" class="orderPageInputLongBold" placeholder="Где вы находитесь">
+                        <button class="orderPageBlueBtn">Поменять населеный пункт</button>
+                    </div>
+                    <input type="text" class="orderPageInputLong" placeholder="Способ доставки">
+                    <input type="text" class="orderPageInputLongTransparent" placeholder="Улица, дом, номер корпуса">
+                    <textarea class="orderTextArea">
+                    </textarea>
+                </div>
+            </div>
+            <div class="secondBlock">
+                <div class="secondBlockTop">
+                    <h1 class="firstBlockTitleTwo">1</h1>
+                    <input class="orderPageInputLong" type="tel" placeholder="+7 (___) ___-__-__">
+                    <div class="orderPageCheckboxes">
+                        <div class="checkBox">
+                            <input type="checkbox" id="client">
+                            <label class="checkBoxLabel" for="client">Юр лицо</label>
+                        </div>
+                        <div class="checkBox">
+                            <input type="checkbox" id="gift">
+                            <label class="checkBoxLabel" for="gift">Отправить в подарок</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="secondBlockMidTop">
+                    <div class="secondBlockMid">
+                        <h1 class="firstBlockTitle">Оплата</h1>
+                        <input type="text" class="orderPageInputLongTransparent" placeholder="Способ оплаты">
+                    </div>
+                    <div class="secondBlockBot">
+                        <h1 class="firstBlockTitle">Бонусная карта</h1>
+                        <input type="text" class="orderPageInputLong" placeholder="Номер карты лояльности">
+                        <div class="loyaltyProgram">
+                            <div class="loyaltyWarning">
+                                Проверить наличие карты по телефону
+                            </div>
+                            <div class="checkBox">
+                                <input type="checkbox" id="loyalty">
+                                <label class="checkBoxLabel" for="loyalty">Зарегистрироваться в программе лояльности</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="thirdBlock">
+                <h1 class="firstBlockTitle">Итого</h1>
+                <div class="finalSettings">
+                    <div class="orderParamBlockFirst">
+                        <div class="orderParamsNames">
+                            <span class="orderParam">Сумма заказа</span>
+                            <span class="orderParam">Способ доставки</span>
+                            <span class="orderParam">Опалата</span>
+                        </div>
+                        <div class="orderParams">
+                            <span class="boldParam">683 Р</span>
+                            <span class="neBoldParam">Выберите способ доставки</span>
+                            <span class="boldParam">Выберите способ оплаты</span>
+                        </div>
+                    </div>
+                    <div class="orderParamBlock">
+                        <div class="orderParamsNames">
+                            <span class="orderParam">К оплате:</span>
+                            <span class="orderParam">Экономия:</span>
+                        </div>
+                        <div class="orderParams">
+                            <span class="neBoldParam">Выберите способ доставки</span>
+                            <span class="boldParam">276.89 руб</span>
+                        </div>
+                    </div>
+                    <div class="orderBtnBlock">
+                        <a href="/cart/" class="orderBtnWhite">Назад в корзину</a>
+                        <a href="/" class="orderBtnOrange">Оформить</a>
+                    </div>
+                    <div class="checkBox">
+                        <input type="checkbox" id="pdApproval">
+                        <label class="checkBoxLongLabel" for="pdApproval">Даю согласие на получение рассылок и другой информации</label>
+                    </div>
+                    <div class="ofertaApproval">
+                        Нажимая кнопку "оформить", Вы соглашаетесь с условиями <u>пользовательского соглашения</u> и с <u>договором оферты</u>
+                    </div>
+                    <a class="orderPageOrangeA">Где ввести промокод?</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+{% endblock %} 

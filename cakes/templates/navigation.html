@@ -1,0 +1,47 @@
+{% load static %}
+<script src="{% static 'js/dropDown.js' %}"></script>
+{% block navigation %}
+<div class="navigation">
+    <div class="navigationWrapper">
+        <div class="navigationWrapperLogo">
+            <h1>
+                CANDY & CAKES
+            </h1>
+        </div>
+        <div class="navigationWrapperLinks">
+            <ul class="navUl">
+                {% if not request.user.is_authenticated %}
+                <li>
+                    <a href="{% url 'cakes:signin' %}"> Старт </a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="/catalog/"> Каталог </a>
+                </li>
+                <li>
+                    <a href="/catalog/"> Конструктор тортов </a>
+                </li>
+                <li>
+                    <a href="/catalog/"> Отчёты </a>
+                </li>
+            </li>
+            </ul>
+        </div>
+        <div class="navigationWrapperProfile">
+            <img src="{% static 'images/user.svg'%}" />
+            <span>ПРОФИЛЬ</span>
+            <img src="{% static 'images/dropdownArrow.svg'%}" />
+            <div id="dropdownMenu" class="dropdownContent" style="display: none;">
+                {% if request.user.is_authenticated %}
+                    <a href="/profile/">Мой профиль</a>
+                    <a href="{% url 'cakes:cart' %}">Корзина</a>
+                    <a href="{% url 'cakes:logout' %}">Выход</a>
+                {% else %}
+                    <a href="{% url 'cakes:signin' %}">Вход</a>
+                    <a href="{% url 'cakes:signup' %}">Регистрация</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock navigation %}
